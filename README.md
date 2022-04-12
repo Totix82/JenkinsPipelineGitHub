@@ -1,5 +1,24 @@
 # JenkinsPipelineGitHub
 
+# Integrate Jenkins and GitHub
+
+Under Source Code Management section of your job configuration choose Git option
+
+Copy the repository URL from your GitHub project
+
+Paste the copied link to Repository URL text box
+
+Next click the Add button under credentials drop-down
+
+Add your GitHub account and password in the populated dialog
+
+Choose githubweb from Repository browser drop-down
+
+Paste your GitHub project URL in the URL text box
+
+
+# The Jenkinsfile
+
 A Jenkinsfile created using the classic UI is stored by Jenkins itself (within the Jenkins home directory).
 
 To create a basic Pipeline through the Jenkins classic UI:
