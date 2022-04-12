@@ -1,1 +1,1 @@
-# JenkinsToFromGitHub-Pack
+# JenkinsPipelineGitHubPack
