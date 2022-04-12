@@ -21,6 +21,8 @@ Paste your GitHub project URL in the URL text box
 
 A Jenkinsfile created using the classic UI is stored by Jenkins itself (within the Jenkins home directory).
 
+In our case will be therefore /var/lib/jenkins/jobs/JenkinsPipelineGitHubPack/config.xml
+
 To create a basic Pipeline through the Jenkins classic UI:
 
 From the Jenkins home page (i.e. the Dashboard of the Jenkins classic UI), click New Item at the top left.
@@ -67,5 +69,10 @@ In both cases the build won't be aborted upon exception in build job: 'system-ch
 But there's one important difference between these two options. In first case if the try section raises an exception the overall build status won't be changed (so echo currentBuild.result => SUCCESS). In the second case you overall build will fail (so echo currentBuild.result => FAILURE).
 
 This is important, because you can always fail the overall build in first case (by setting currentBuild.result = 'FAILURE') but you can't repair build in second option (currentBuild.result = 'SUCCESS' won't work).
+
+
+# Run the Pipeline
+
+Run the pipeline and find the clone in /var/lib/jenkins/workspace/clone-apache-commons-io
 
 
