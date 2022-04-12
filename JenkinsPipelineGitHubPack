@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Notify to admins that Jenkins pipeline to clone apache/commons-io libs is starting') {
+        // Notify to admins that Jenkins pipeline to clone apache/commons-io libs is starting
+            steps {
+                script {
+                    try {
+                        echo 'Jenkins pipeline to clone apache/commons-io libs is starting'
+                            mail (to: 'aaaabbbbcccc@aaamail.com',
+                            subject: "Jenkins pipeline '${env.JOB_NAME}' (${env.BUILD_NUMBER}) has started!",
+                            body: "You can track the whole process at ${env.BUILD_URL}");
+                        } catch (err) {
+                echo err.getMessage()
+                        }
+                }
+                echo currentBuild.result    
+            }
+        }
+        stage('Clone apache/commons-io libs') {
+            steps {
+                echo 'Cloning of apache/commons-io libs is starting'
+                build job: 'clone-apache-commons-io'
+                echo 'Libs apache/commons-io cloned'
+            }
+        }
+        stage('Notify to admins that Jenkins pipeline to clone apache/commons-io libs is ended') {
+        // Notify to admins that Jenkins pipeline to clone apache/commons-io libs is ended
+            steps {
+                script {
+                    try {
+                        echo 'Jenkins pipeline to clone apache/commons-io libs is ended'
+                            mail (to: 'aaaabbbbcccc@aaamail.com',
+                            subject: "Jenkins Pipeline '${env.JOB_NAME}' (${env.BUILD_NUMBER}) has ended!",
+                            body: "You can track the whole process at ${env.BUILD_URL}");
+                        } catch (err) {
+                echo err.getMessage()
+                        }
+                }
+                echo currentBuild.result    
+            }
+        }
+    }
+}
