@@ -1,4 +1,4 @@
-# JenkinsPipelineGitHubPack
+# JenkinsPipelineGitHub
 
 A Jenkinsfile created using the classic UI is stored by Jenkins itself (within the Jenkins home directory).
 
