@@ -1,10 +1,14 @@
 # JenkinsPipelineGitHub
 
-# Integrate Jenkins and GitHub
+This project is for a demo of how to create a Jenkins job and pipeline that clones a GitHub repo. 
+
+# Integrate Jenkins and GitHub in a Jenkins job
+
+Create a job as a free-style called "clone-apache-commons-io"
 
 Under Source Code Management section of your job configuration choose Git option
 
-Copy the repository URL from your GitHub project
+Copy the repository URL from your GitHub project (in our case https://github.com/apache/commons-io)
 
 Paste the copied link to Repository URL text box
 
@@ -14,14 +18,16 @@ Add your GitHub account and password in the populated dialog
 
 Choose githubweb from Repository browser drop-down
 
-Paste your GitHub project URL in the URL text box
+Paste your GitHub project URL in the URL text box (as per above)
 
 
-# The Jenkinsfile
+# The Jenkinsfile for the pipeline
 
 A Jenkinsfile created using the classic UI is stored by Jenkins itself (within the Jenkins home directory).
 
 In our case will be therefore /var/lib/jenkins/jobs/JenkinsPipelineGitHubPack/config.xml
+
+In this repo 2 versions have been provided: the XML version that Jenkins uses in the background as well (as a file) the Groovy script that Jenkins uses in the GUI. 
 
 To create a basic Pipeline through the Jenkins classic UI:
 
@@ -36,11 +42,9 @@ In the Pipeline section, ensure that the Definition field indicates the Pipeline
 Enter your Pipeline code into the Script text area.
 
 
-The build will be composed by X stages. The notification stages will be ignored, since they will fail.
+The build will be composed by 3 stages. The notification stages of start/end of the project will be ignored, since they will fail because currently I don't have an SMTP server available.
 
-Currently I don't have an SMTP server available.
-
-To skip then use script step and try-catch block (similar to previous proposition by R_K but in declarative style), e.g.
+To skip then use a script step and try-catch block (similar to previous proposition by R_K but in declarative style), e.g.
 
 stage('someStage') {
     steps {
@@ -74,5 +78,4 @@ This is important, because you can always fail the overall build in first case (
 # Run the Pipeline
 
 Run the pipeline and find the clone in /var/lib/jenkins/workspace/clone-apache-commons-io
-
 
